@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[新博客，新开始！]]></title>
+    <url>%2F2017%2F10%2F20%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[欢迎访问Waiter的个人博客，此博客是hexo+github搭建而成的。域名以及服务器在阿里云买的。个人github主页为Github 开篇先来一句Hello World?1println("Hello World") so I’m javaer;]]></content>
+      <categories>
+        <category>闲来扯淡</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>hexo</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+</search>
