@@ -137,7 +137,7 @@
 <meta property="og:site_name" content="Waiter">
 <meta property="og:description" content="1 Nginx是什么？Nginx服务器是轻量级Web服务器中广受好评的一款产品，近几年来，Nginx逐步进入高速发展的时期，从各类主流的IT媒体到各大著名的IT论坛，都能不断的看到它的身影，可以观看下图，可以知道nginx现在到底有多火。 2 常见服务器产品1，Apache服务器说起来apache服务器的话，相信大家对这个服务器都不陌生，不可否认，apache仍旧是当前WEB服务器的领军者，但是在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-28T07:16:57.531Z">
+<meta property="og:updated_time" content="2017-11-28T07:20:12.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7上Nginx的服务器的安装与部署，以及基础使用">
 <meta name="twitter:description" content="1 Nginx是什么？Nginx服务器是轻量级Web服务器中广受好评的一款产品，近几年来，Nginx逐步进入高速发展的时期，从各类主流的IT媒体到各大著名的IT论坛，都能不断的看到它的身影，可以观看下图，可以知道nginx现在到底有多火。 2 常见服务器产品1，Apache服务器说起来apache服务器的话，相信大家对这个服务器都不陌生，不可否认，apache仍旧是当前WEB服务器的领军者，但是在">
@@ -380,24 +380,20 @@
 <p>其将源代码以类BSD许可证的形式发布，因它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。2011年6月1日，nginx 1.0.4发布。</p>
 <p>Nginx是一款轻量级的Web服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：百度、京东、新浪、网易、腾讯、淘宝等。</p>
 <p>接下来，就该进行Nginx的安装与部署啦。</p>
-<p>4 Nginx下载与安装</p>
-<p>   4.1 下载Nginx</p>
-<p> 首先打开Nginx的下载链接 点我点我，然后如图所示。</p>
+<h3 id="4-Nginx下载与安装"><a href="#4-Nginx下载与安装" class="headerlink" title="4 Nginx下载与安装"></a>4 Nginx下载与安装</h3><h2 id="4-1-下载Nginx"><a href="#4-1-下载Nginx" class="headerlink" title="4.1 下载Nginx"></a>4.1 下载Nginx</h2><p> 首先打开Nginx的下载链接 点我点我，然后如图所示。</p>
 <p>在此说下各个版本的不同吧。</p>
 <p>Mainline version：最新版本，但是不会保证稳定。<br>Stable version：稳定版本，我们也是选择这个稳定版本。<br>Legacy versions：过去的旧版本，一般是不推荐选这个的，也不多说。<br>因为此处笔者要在Centos上安装Nginx，所以选择的是我现在的稳定版本Nginx-1.12.2 右键复制下载地址。然后来到咱们的Centos虚拟机上，</p>
 <p>笔者是在/usr/local/src下进行下载编译的。这个要看个人使用环境，也可以选择根据笔者的来。输入下面这行命令：</p>
 <p>wget <a href="http://nginx.org/download/nginx-1.12.2.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.12.2.tar.gz</a></p>
 <p>然后回车进行下载，Nginx本身并不算大，所以很快进行下载完毕。</p>
-<p>4.2 检查并安装所需的依赖软件</p>
-<pre><code>1).gcc:nginx编译依赖gcc环境
+<h2 id="4-2-检查并安装所需的依赖软件"><a href="#4-2-检查并安装所需的依赖软件" class="headerlink" title="4.2 检查并安装所需的依赖软件"></a>4.2 检查并安装所需的依赖软件</h2><pre><code>1).gcc:nginx编译依赖gcc环境
 
 yum install gcc-c++
 2).pcre:(Perl Compatible Regular Expressions)是一个Perl库，包括perl兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式.
 </code></pre><p>yum install -y pcre pcre-devel<br>3).zlib：该库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip。</p>
 <p>yum install -y zlib zlib-devel<br>4).openssl:一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。nginx不仅支持http协议，还支持https（即在ssl协议上传输http）.</p>
 <p>yum install -y openssl openssl-devel<br>以上四个命令分别运行，然后接下来就可以进行解压安装了。</p>
-<p>4.3 解压Nginx。编译Nginx。</p>
-<p>运行以下命令：</p>
+<h2 id="4-3-解压Nginx。编译Nginx。"><a href="#4-3-解压Nginx。编译Nginx。" class="headerlink" title="4.3 解压Nginx。编译Nginx。"></a>4.3 解压Nginx。编译Nginx。</h2><p>运行以下命令：</p>
 <p>tar zxvf nginx-1.12.2.tar.gz<br>然后进入到解压后的Nginx目录中</p>
 <p>cd nginx-1.12.2/<br>可以看到如图所示的几个目录</p>
 <p>.配置编译参数(可以使用./configure –help查询详细参数)：</p>
@@ -413,8 +409,7 @@ yum install gcc-c++
 <p>… htm目录：l网页文件</p>
 <p>…logs目录：日志文件</p>
 <p>…sbin目录：主要二进制程序</p>
-<p>5，Nginx的启动</p>
-<p>运行以下命令：</p>
+<h3 id="5，Nginx的启动"><a href="#5，Nginx的启动" class="headerlink" title="5，Nginx的启动"></a>5，Nginx的启动</h3><p>运行以下命令：</p>
 <p>./sbin/nginx<br>如图所示，则代表nginx启动完成。</p>
 <p>笔者发现，有些用户装了apache或者其他软件后，会占用80端口。nginx默认开启的是80端口，如果有其他服务占用了80端口，就会发生如图所示的情况。</p>
 <p>此时，这个情况下，就需要查找一个80端口究竟是被谁给占用了。笔者因为没被占用，所以就起了两次Nginx，起两次的话，自然就会产生端口占用了。</p>
@@ -647,7 +642,7 @@ yum install gcc-c++
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Nginx是什么？"><span class="nav-number">1.</span> <span class="nav-text">1 Nginx是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-常见服务器产品"><span class="nav-number">2.</span> <span class="nav-text">2 常见服务器产品</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1，Apache服务器"><span class="nav-number"></span> <span class="nav-text">1，Apache服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，Microsoft-IIS"><span class="nav-number"></span> <span class="nav-text">2，Microsoft IIS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，Tomcat服务器"><span class="nav-number"></span> <span class="nav-text">3，Tomcat服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Nginx概述"><span class="nav-number">1.</span> <span class="nav-text">3 Nginx概述</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Nginx是什么？"><span class="nav-number">1.</span> <span class="nav-text">1 Nginx是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-常见服务器产品"><span class="nav-number">2.</span> <span class="nav-text">2 常见服务器产品</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1，Apache服务器"><span class="nav-number"></span> <span class="nav-text">1，Apache服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，Microsoft-IIS"><span class="nav-number"></span> <span class="nav-text">2，Microsoft IIS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，Tomcat服务器"><span class="nav-number"></span> <span class="nav-text">3，Tomcat服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Nginx概述"><span class="nav-number">1.</span> <span class="nav-text">3 Nginx概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Nginx下载与安装"><span class="nav-number">2.</span> <span class="nav-text">4 Nginx下载与安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-下载Nginx"><span class="nav-number"></span> <span class="nav-text">4.1 下载Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-检查并安装所需的依赖软件"><span class="nav-number"></span> <span class="nav-text">4.2 检查并安装所需的依赖软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-解压Nginx。编译Nginx。"><span class="nav-number"></span> <span class="nav-text">4.3 解压Nginx。编译Nginx。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5，Nginx的启动"><span class="nav-number">1.</span> <span class="nav-text">5，Nginx的启动</span></a></li></ol></div>
             
 
           </div>
