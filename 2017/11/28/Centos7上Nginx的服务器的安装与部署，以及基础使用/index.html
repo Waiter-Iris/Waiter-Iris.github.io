@@ -146,7 +146,7 @@
 <meta property="og:image" content="http://p03zghgh1.bkt.clouddn.com/nginx/jpg/8.png">
 <meta property="og:image" content="http://p03zghgh1.bkt.clouddn.com/nginx/jpg/9.png">
 <meta property="og:image" content="http://p03zghgh1.bkt.clouddn.com/nginx/jpg/10.png">
-<meta property="og:updated_time" content="2017-11-28T08:28:25.886Z">
+<meta property="og:updated_time" content="2017-11-28T08:32:19.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7上Nginx的服务器的安装与部署，以及基础使用">
 <meta name="twitter:description" content="1 Nginx是什么？Nginx服务器是轻量级Web服务器中广受好评的一款产品，近几年来，Nginx逐步进入高速发展的时期，从各类主流的IT媒体到各大著名的IT论坛，都能不断的看到它的身影，可以观看下图，可以知道nginx现在到底有多火 2 常见服务器产品1，Apache服务器说起来apache服务器的话，相信大家对这个服务器都不陌生，不可否认，apache仍旧是当前WEB服务器的领军者，但是在具">
@@ -395,10 +395,8 @@
 <p>Mainline version：最新版本，但是不会保证稳定。<br>Stable version：稳定版本，我们也是选择这个稳定版本。<br>Legacy versions：过去的旧版本，一般是不推荐选这个的，也不多说。<br>因为此处笔者要在Centos上安装Nginx，所以选择的是我现在的稳定版本Nginx-1.12.2 右键复制下载地址。然后来到咱们的Centos虚拟机上，</p>
 <p>笔者是在/usr/local/src下进行下载编译的。这个要看个人使用环境，也可以选择根据笔者的来。输入下面这行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://nginx.org/download/nginx-1.12.2.tar.gz</div></pre></td></tr></table></figure></p>
 <p>然后回车进行下载，Nginx本身并不算大，所以很快进行下载完毕。</p>
-<h2 id="4-2-检查并安装所需的依赖软件"><a href="#4-2-检查并安装所需的依赖软件" class="headerlink" title="4.2 检查并安装所需的依赖软件"></a>4.2 检查并安装所需的依赖软件</h2><pre><code>1).gcc:nginx编译依赖gcc环境
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install gcc-c++</div></pre></td></tr></table></figure>
-<pre><code>2).pcre:(Perl Compatible Regular Expressions)是一个Perl库，包括perl兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式.
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y pcre pcre-devel</div></pre></td></tr></table></figure>
+<h2 id="4-2-检查并安装所需的依赖软件"><a href="#4-2-检查并安装所需的依赖软件" class="headerlink" title="4.2 检查并安装所需的依赖软件"></a>4.2 检查并安装所需的依赖软件</h2><p>1).gcc:nginx编译依赖gcc环境<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install gcc-c++</div></pre></td></tr></table></figure></p>
+<p>2).pcre:(Perl Compatible Regular Expressions)是一个Perl库，包括perl兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y pcre pcre-devel</div></pre></td></tr></table></figure></p>
 <p>3).zlib：该库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y zlib zlib-devel</div></pre></td></tr></table></figure></p>
 <p>4).openssl:一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。nginx不仅支持http协议，还支持https（即在ssl协议上传输http）.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y openssl openssl-devel</div></pre></td></tr></table></figure></p>
 <p>以上四个命令分别运行，然后接下来就可以进行解压安装了。</p>
